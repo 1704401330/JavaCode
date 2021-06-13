@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Bowling.controller.LoginAction">
+   <children>
+      <Label layoutX="199.0" layoutY="144.0" text="账号：" />
+      <Label layoutX="199.0" layoutY="228.0" text="密码：" />
+      <TextField fx:id="accountText" layoutX="258.0" layoutY="140.0" />
+      <PasswordField fx:id="passwordText" layoutX="258.0" layoutY="224.0" />
+      <Button fx:id="login"  onAction="#login" layoutX="273.0" layoutY="299.0" mnemonicParsing="false" text="登录" />
+   </children>
+</AnchorPane>
