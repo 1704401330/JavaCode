@@ -53,12 +53,12 @@ public class BowlingSys {
      * 分组
      */
     public void InitialTeam(){
-        Team team = null;int i=0;
+        Team team = null;int i=0,j=0;
         for(Player player:players){
             if (isManager(player)) continue;
             if(team == null) {
                 team = new Team(
-                        String.format("队列%d号",i),
+                        String.format("队伍%03d号",i),
                         rand()
                 );
             }
@@ -69,6 +69,8 @@ public class BowlingSys {
                 team = null;
                 i++;
             }
+            j++;
+            if(j>100) break;
         }
     }
 
@@ -94,12 +96,12 @@ public class BowlingSys {
      */
     public void InitialPlayer(){
         Player player;
-        for(int i=0;i <200;i++){
+        for(int i=0;i <300;i++){
             player = new Player(
-                    String.format(i>100?"人机%d号":"管理员%d号",i+1),
+                    String.format(i>100?"人机%03d号":"管理员%03d号",i+1),
                     String.format("%d",i>100? 20000+i+1:10000+i+1),
                     String.format("123456"),
-                    String.format("123456%d",i),
+                    String.format("123456%03d",i),
                     String.format("南昌市")
             );
             players.add(player);
@@ -139,6 +141,23 @@ public class BowlingSys {
             }
         }
         return false;
+    }
+
+    /**
+     * 删除比赛记录
+     */
+    public void remove(){
+        TreeSet<Team> newteams = new TreeSet<>();
+        for (Team team : teams)
+            if (team.getFlag()) {
+                team.remove();
+                newteams.add(new Team(team.getName(), team.getGameType(), 0, team.getPlayerNum(), team.getPlayers(), false));
+            }
+        teams = newteams;
+        for(int i=0;i<players.size();i++){
+            players.get(i).setFlag(false);
+            players.get(i).remove();
+        }
     }
 
     /**
@@ -199,5 +218,13 @@ public class BowlingSys {
 
     public void setTeams(TreeSet<Team> teams) {
         this.teams = teams;
+    }
+
+    public boolean getFlag() {
+        return flag;
+    }
+
+    public void setFlag(boolean flag) {
+        this.flag = flag;
     }
 }

@@ -25,8 +25,6 @@ public class LoginAction {
             stageController.setStage("main","login");
         }
         else pane.paintHint("密码或账户错误！");
-        bowlingSys.InitialPlayer();
-        bowlingSys.InitialTeam();
     }
 
     @FXML

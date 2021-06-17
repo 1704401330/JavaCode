@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #98ddcf;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Bowling.controller.joinAction">
+   <children>
+      <TextField fx:id="player2" layoutX="75.0" layoutY="237.0" />
+      <TextField fx:id="player3" layoutX="75.0" layoutY="303.0" />
+      <TextField fx:id="player4" layoutX="357.0" layoutY="237.0" />
+      <TextField fx:id="player5" layoutX="357.0" layoutY="303.0" />
+      <Label layoutX="33.0" layoutY="241.0" text="队员2：" />
+      <Label layoutX="314.0" layoutY="241.0" text="队员3：" />
+      <Label layoutX="33.0" layoutY="307.0" text="队员4：" />
+      <Label layoutX="314.0" layoutY="307.0" text="队员5：" />
+      <TextField fx:id="player1" layoutX="75.0" layoutY="176.0" />
+      <Label layoutX="33.0" layoutY="180.0" text="队员1：" />
+      <Label layoutX="48.0" layoutY="37.0" prefHeight="34.0" prefWidth="505.0" text="请先选择比赛类型,再根据比赛类型人数添加队员账号，队员账号必须已注册" textFill="#df1313">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <MenuButton fx:id="gametype" layoutX="241.0" layoutY="105.0" mnemonicParsing="false" text="比赛类型">
+         <items>
+            <MenuItem mnemonicParsing="false" onAction="#setSingleGame" text="单人赛" />
+            <MenuItem mnemonicParsing="false" onAction="#setDoubleGame" text="双人赛" />
+            <MenuItem mnemonicParsing="false" onAction="#setTripleGame" text="三人赛" />
+            <MenuItem mnemonicParsing="false" onAction="#setQuinGame" text="五人赛" />
+            <MenuItem mnemonicParsing="false" onAction="#setEliteGame" text="精英赛" />
+            <MenuItem mnemonicParsing="false" onAction="#setVerGame" text="全能赛" />
+         </items>
+      </MenuButton>
+      <Button layoutX="261.0" layoutY="355.0" mnemonicParsing="false" onAction="#join" text="报名" />
+      <TextField fx:id="teamName" layoutX="357.0" layoutY="176.0" />
+      <Label layoutX="290.0" layoutY="180.0" text="队伍名称：" />
+   </children>
+</AnchorPane>

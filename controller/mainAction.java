@@ -22,6 +22,10 @@ public class mainAction {
     private TextArea resultLable;
 
     @FXML
+    public void join(){
+        stageController.setStage("join","main");
+    }
+    @FXML
     public void start(){
         if(bowlingSys.isManager(bowlingSys.getCurrentPlayer())) bowlingSys.play();
         else if (!bowlingSys.getCurrentPlayer().getFlag())bowlingSys.getCurrentPlayer().play();
@@ -44,17 +48,18 @@ public class mainAction {
     public void getGameResult(){
         List<Team> teams= new ArrayList<>();
         for (Team team:bowlingSys.getTeams())
-            if(team.getGameType().equals(bowlingSys.getGameType())) teams.add(team);
+            if (team.getGameType().equals(bowlingSys.getGameType())) teams.add(team);
         String result = "队伍名称                    分数                    排名\n";
-        int i=1,score=0;
+        int i=0,score=0;
         for(Team team:teams){
-            result =result+team.toString()+team.getAllScore()+
-                    "                    "+String.format("%d\n",i);
-            bowlingSys.getTeams().ceiling(team).setRanking(i);
             if (score!=team.getAllScore()){
                 score = team.getAllScore();
-                i++;
-            }
+                 i++;
+             }
+            result =result+team.toString()+
+                    String.format("%3d",team.getAllScore())+
+                    "                    "+String.format("%2d\n",i);
+            bowlingSys.getTeams().ceiling(team).setRanking(i);
         }
         resultLable.setText(result);
     }
@@ -66,11 +71,22 @@ public class mainAction {
             String str = "队伍名称                    分数                    排名\n";
             Team team = bowlingSys.searchTeam();
             Player player = bowlingSys.getCurrentPlayer();
-            str = str + team.toString()+team.getAllScore()+
-                    "                    "+String.format("%d\n\n\n\n",team.getRanking())+
+            str = str + team.toString()+String.format("%3d",team.getAllScore())+
+                    "                    "+String.format("%2d\n\n\n\n",team.getRanking())+
                     "个人分数：\n"+player.getScores().toString();
             resultLable.setText(str);
         }
+    }
+
+    @FXML
+    public void removeAll(){
+        if (bowlingSys.isManager(bowlingSys.getCurrentPlayer())) {
+            bowlingSys.setFlag(false);
+            bowlingSys.remove();
+            resultLable.setText("");
+            getGameResult();
+        }
+        else pane.paintHint("您没有权限！");
     }
 
     @FXML

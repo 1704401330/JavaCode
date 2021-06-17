@@ -21,7 +21,7 @@
             <MenuItem mnemonicParsing="false" onAction="#setVerGame" text="全能赛" />
         </items>
       </MenuButton>
-      <Button fx:id="start" layoutX="366.0" layoutY="21.0" mnemonicParsing="false" onAction="#start" text="开始比赛" />
+      <Button fx:id="start" layoutX="334.0" layoutY="19.0" mnemonicParsing="false" onAction="#start" text="开始比赛" />
       <Button layoutX="22.0" layoutY="325.0" mnemonicParsing="false" onAction="#exit" text="退出" />
       <MenuButton layoutX="4.0" layoutY="200.0" mnemonicParsing="false" text="信息查询">
         <items>
@@ -29,15 +29,17 @@
           <MenuItem mnemonicParsing="false" onAction="#getInf" text="比赛通知" />
         </items>
       </MenuButton>
-      <Label fx:id="Inf" alignment="CENTER" layoutX="437.0" layoutY="66.0" prefHeight="322.0" prefWidth="146.0" style="-fx-background-color: #93f5b8;" text="信息" textFill="#dd1515">
+      <Label fx:id="Inf" alignment="CENTER" layoutX="437.0" layoutY="66.0" prefHeight="322.0" prefWidth="146.0" style="-fx-background-color: #51f886;" text="信息" textFill="#f75252">
          <font>
             <Font name="Segoe Script" size="15.0" />
          </font></Label>
       <Label layoutX="468.0" layoutY="44.0" prefHeight="15.0" prefWidth="64.0" text="信息：" />
       <MenuButton layoutX="4.0" layoutY="80.0" mnemonicParsing="false" text="赛事管理">
         <items>
-          <MenuItem mnemonicParsing="false" text="报名" />
+          <MenuItem mnemonicParsing="false" onAction="#join" text="报名" />
           <MenuItem mnemonicParsing="false" onAction="#setInf" text="通知设置" />
+            <MenuItem mnemonicParsing="false" onAction="#removeAll" text="删除比赛记录" />
+            <MenuItem mnemonicParsing="false"  text="导入数据" />
         </items>
       </MenuButton>
       <MenuButton layoutX="4.0" layoutY="146.0" mnemonicParsing="false" text="结果查询">

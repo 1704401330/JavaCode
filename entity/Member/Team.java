@@ -2,6 +2,7 @@ package Bowling.entity.Member;
 
 import Bowling.entity.Game.GameType;
 
+import java.security.PublicKey;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,12 +22,6 @@ public class Team implements Comparable<Team>{
         this.allScore=0;
         this.playerNum=0;
 
-    }
-
-    public Team(String name, List<Player> players, GameType gameType) {
-        this.name = name;
-        this.players = players;
-        this.gameType = gameType;
     }
 
     public Team(String name, GameType gameType, int allScore, int playerNum, List<Player> players ,boolean flag) {
@@ -59,6 +54,14 @@ public class Team implements Comparable<Team>{
             player.play();
     }
 
+    /**
+     * 删除比赛记录
+     */
+    public  void remove(){
+        for(int i=0;i<players.size();i++)
+            players.get(i).remove();
+    }
+
     public void addPlayer(Player player){
         players.add(player);
     }
@@ -84,6 +87,7 @@ public class Team implements Comparable<Team>{
         for (Player player : players){
             newallScore += player.getAllScore();
         }
+        this.allScore = newallScore;
         return newallScore;
     }
 

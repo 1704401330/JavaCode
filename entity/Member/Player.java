@@ -25,6 +25,10 @@ public class Player {
         this.site = site;
     }
 
+    public void setFlag(boolean flag) {
+        this.flag = flag;
+    }
+
     public String getName() {
         return name;
     }
@@ -58,6 +62,15 @@ public class Player {
 
     public int getAllScore() {
         return allScore;
+    }
+
+    /**
+     * 删除比赛记录
+     */
+    public void remove(){
+        this.scores = new ArrayList<>();
+        this.grades = new ArrayList<>();
+        allScore=0;
     }
 
     /**
