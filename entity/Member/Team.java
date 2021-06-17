@@ -5,17 +5,21 @@ import Bowling.entity.Game.GameType;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Team {
+public class Team implements Comparable<Team>{
 
     private String name ;
-    private List<Player> players = new ArrayList<>();
     private GameType gameType;
     private int allScore;
-    private int playerNum = 0;
+    private int playerNum=0;
+    private int ranking ;
+    private List<Player> players = new ArrayList<>();
+    private boolean flag = false;
 
     public Team(String name, GameType gameType) {
         this.name = name;
         this.gameType = gameType;
+        this.allScore=0;
+        this.playerNum=0;
 
     }
 
@@ -23,6 +27,15 @@ public class Team {
         this.name = name;
         this.players = players;
         this.gameType = gameType;
+    }
+
+    public Team(String name, GameType gameType, int allScore, int playerNum, List<Player> players ,boolean flag) {
+        this.name = name;
+        this.gameType = gameType;
+        this.allScore = allScore;
+        this.playerNum = playerNum;
+        this.players = players;
+        this.flag = flag;
     }
 
     public GameType getGameType() {
@@ -34,9 +47,16 @@ public class Team {
     }
 
     public int compareTo(Team team){
-        int result = Integer.compare(allScore, team.allScore);
-        if(result == 0) result = name.compareTo(team.name);
+
+        int result = Integer.compare(team.getAllScore(),allScore);
+        if(result == 0) result = this.getName().compareTo(team.getName());
+        if(result ==0) result = this.getGameType().compareTo(team.getGameType());
         return result;
+    }
+
+    public void play(){
+        for (Player player:players)
+            player.play();
     }
 
     public void addPlayer(Player player){
@@ -59,19 +79,12 @@ public class Team {
         this.playerNum = playerNum;
     }
 
-    public void add(Player player){
-        if(players.size()==2) {
-            System.out.println("错误！");
-            return ;
-        }
-        players.add(player);
-    }
-
-    public int getAllScore(){
+    public int calAllScore(){
+        int newallScore = 0;
         for (Player player : players){
-            allScore += player.getAllScore();
+            newallScore += player.getAllScore();
         }
-        return allScore;
+        return newallScore;
     }
 
     public String getName() {
@@ -84,5 +97,31 @@ public class Team {
 
     public void setAllScore(int allScore) {
         this.allScore = allScore;
+    }
+
+    public int getAllScore(){
+        return allScore;
+    }
+
+    @Override
+    public String toString() {
+        return  name+
+                "                    ";
+    }
+
+    public int getRanking() {
+        return ranking;
+    }
+
+    public void setRanking(int ranking) {
+        this.ranking = ranking;
+    }
+
+    public boolean getFlag() {
+        return flag;
+    }
+
+    public void setFlag(boolean flag) {
+        this.flag = flag;
     }
 }

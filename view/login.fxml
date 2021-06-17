@@ -1,18 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.text.Font?>
 
-
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Bowling.controller.LoginAction">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #aff278;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Bowling.controller.LoginAction">
    <children>
-      <Label layoutX="199.0" layoutY="144.0" text="账号：" />
-      <Label layoutX="199.0" layoutY="228.0" text="密码：" />
-      <TextField fx:id="accountText" layoutX="258.0" layoutY="140.0" />
-      <PasswordField fx:id="passwordText" layoutX="258.0" layoutY="224.0" />
-      <Button fx:id="login"  onAction="#login" layoutX="273.0" layoutY="299.0" mnemonicParsing="false" text="登录" />
+      <Label layoutX="204.0" layoutY="92.0" text="账户" textFill="#1b99d7">
+         <font>
+            <Font size="19.0" />
+         </font>
+      </Label>
+      <Label layoutX="204.0" layoutY="157.0" text="密码" textFill="#1b99d7">
+         <font>
+            <Font size="19.0" />
+         </font>
+      </Label>
+      <TextField fx:id="accountText" layoutX="255.0" layoutY="86.0" prefHeight="38.0" prefWidth="162.0" />
+      <Button layoutX="275.0" layoutY="217.0" mnemonicParsing="false" onAction="#login" prefHeight="38.0" prefWidth="82.0" style="-fx-background-color: #dae27c;" text="登入" textFill="#062bfa" />
+      <PasswordField fx:id="passwordField" layoutX="255.0" layoutY="151.0" prefHeight="38.0" prefWidth="162.0" />
+      <Button fx:id="forgetPassWord" onAction="#forgetPassWord" layoutX="284.0" layoutY="263.0" mnemonicParsing="false" style="-fx-background-color: #aff278;" text="忘记密码" />
    </children>
 </AnchorPane>

@@ -1,28 +1,51 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.MenuButton?>
 <?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="400.0" prefWidth="598.0" style="-fx-background-color: #98ddcf;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Bowling.controller.mainAction">
    <children>
-      <Button layoutX="38.0" layoutY="75.0" mnemonicParsing="false" text="赛事管理" />
-      <Button onAction="#getGameInf" layoutX="38.0" layoutY="138.0" mnemonicParsing="false" text="比赛查询" />
-      <Button layoutX="38.0" layoutY="212.0" mnemonicParsing="false" text="个人信息" />
-      <Button layoutX="38.0" layoutY="274.0" mnemonicParsing="false" text="返回" />
-      <AnchorPane layoutX="117.0" layoutY="44.0" prefHeight="344.0" prefWidth="458.0" style="-fx-background-color: #93f5b8;" />
+      <Button layoutX="22.0" layoutY="268.0" mnemonicParsing="false" onAction="#back" text="返回" />
       <MenuButton layoutX="117.0" layoutY="21.0" mnemonicParsing="false" text="比赛类型">
         <items>
-          <MenuItem mnemonicParsing="false" text="单人赛" />
-          <MenuItem mnemonicParsing="false" text="双人赛" />
-            <MenuItem mnemonicParsing="false" text="三人赛" />
-            <MenuItem mnemonicParsing="false" text="五人赛" />
-            <MenuItem mnemonicParsing="false" text="全能赛" />
-            <MenuItem mnemonicParsing="false" text="精英赛" />
+          <MenuItem mnemonicParsing="false" onAction="#setSingleGame" text="单人赛" />
+          <MenuItem mnemonicParsing="false" onAction="#setDoubleGame" text="双人赛" />
+            <MenuItem mnemonicParsing="false" onAction="#setTripleGame" text="三人赛" />
+            <MenuItem mnemonicParsing="false" onAction="#setQuinGame" text="五人赛" />
+            <MenuItem mnemonicParsing="false" onAction="#setEliteGame" text="精英赛" />
+            <MenuItem mnemonicParsing="false" onAction="#setVerGame" text="全能赛" />
         </items>
       </MenuButton>
-      <Button fx:id="start" onAction="#start" layoutX="408.0" layoutY="21.0" mnemonicParsing="false" text="开始比赛" />
-      <Button layoutX="43.0" layoutY="325.0" mnemonicParsing="false" text="退出" />
+      <Button fx:id="start" layoutX="366.0" layoutY="21.0" mnemonicParsing="false" onAction="#start" text="开始比赛" />
+      <Button layoutX="22.0" layoutY="325.0" mnemonicParsing="false" onAction="#exit" text="退出" />
+      <MenuButton layoutX="4.0" layoutY="200.0" mnemonicParsing="false" text="信息查询">
+        <items>
+          <MenuItem mnemonicParsing="false" onAction="#getSelfInf" text="个人信息" />
+          <MenuItem mnemonicParsing="false" onAction="#getInf" text="比赛通知" />
+        </items>
+      </MenuButton>
+      <Label fx:id="Inf" alignment="CENTER" layoutX="437.0" layoutY="66.0" prefHeight="322.0" prefWidth="146.0" style="-fx-background-color: #93f5b8;" text="信息" textFill="#dd1515">
+         <font>
+            <Font name="Segoe Script" size="15.0" />
+         </font></Label>
+      <Label layoutX="468.0" layoutY="44.0" prefHeight="15.0" prefWidth="64.0" text="信息：" />
+      <MenuButton layoutX="4.0" layoutY="80.0" mnemonicParsing="false" text="赛事管理">
+        <items>
+          <MenuItem mnemonicParsing="false" text="报名" />
+          <MenuItem mnemonicParsing="false" onAction="#setInf" text="通知设置" />
+        </items>
+      </MenuButton>
+      <MenuButton layoutX="4.0" layoutY="146.0" mnemonicParsing="false" text="结果查询">
+        <items>
+          <MenuItem mnemonicParsing="false" onAction="#getGameResult" text="比赛结果" />
+          <MenuItem mnemonicParsing="false" onAction="#getSelfResult" text="个人结果" />
+        </items>
+      </MenuButton>
+      <TextArea fx:id="resultLable" layoutX="94.0" layoutY="62.0" prefHeight="329.0" prefWidth="330.0" />
    </children>
 </AnchorPane>

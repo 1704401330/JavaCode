@@ -4,16 +4,17 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-public class Player implements Member {
+public class Player {
 
     public String name ;
     public String account ;
     public String password ;
     public String phoneNum ;
     public String site ;
-    
-    private List<Integer> scores = new ArrayList<Integer>();
     private int allScore;
+    private boolean flag = false;
+
+    private List<Integer> scores = new ArrayList<Integer>();
     private List<Integer> grades=new ArrayList<>();
 
     public Player(String name, String account, String password, String phoneNum, String site) {
@@ -40,9 +41,6 @@ public class Player implements Member {
         this.account = account;
     }
 
-    public String getPassword() {
-        return password;
-    }
 
     public void setPassword(String password) {
         this.password = password;
@@ -52,25 +50,11 @@ public class Player implements Member {
         return phoneNum;
     }
 
-    public void setPhoneNum(String phoneNum) {
-        this.phoneNum = phoneNum;
-    }
-
-    public String getSite() {
-        return site;
-    }
-
-    public void setSite(String site) {
-        this.site = site;
-    }
 
     public List<Integer> getScores() {
         return scores;
     }
 
-    public void setScores(List<Integer> scores) {
-        this.scores = scores;
-    }
 
     public int getAllScore() {
         return allScore;
@@ -87,7 +71,7 @@ public class Player implements Member {
      * 计算每一格的分数
      */
     public void calScores() {
-        Integer[] num = grades.toArray(new Integer[100]);
+        Integer[] num = grades.toArray(new Integer[25]);
         int a = 0;
         for (int i = 0; i < 10; i++) {
           if(num[a]==10) scores.add(num[a]+num[a+1]+num[a+2]);
@@ -101,18 +85,23 @@ public class Player implements Member {
      * 模拟比赛
      */
     public void play(){
-        int grade1,grade2 = 0;
-        for(int i=0;i<10;i++){
-            grade1 = ComeBowling(10);
-            grades.add(grade1);
-            if(grade1<10) {
-                grade2=ComeBowling(10-grade1);
-                grades.add(grade2);
+        if (!flag) {
+            int grade1, grade2 = 0;
+            for (int i = 0; i < 10; i++) {
+                grade2 = 0;
+                grade1 = ComeBowling(10);
+                grades.add(grade1);
+                if (grade1 < 10) {
+                    grade2 = ComeBowling(10 - grade1);
+                    grades.add(grade2);
+                }
+                if (i == 9 && grade1 + grade2 <= 10) grades.add(ComeBowling(10));
+                if (i == 9 && grade1 == 10) grades.add(ComeBowling(10));
             }
-            if(i==9&&grade1+grade2>10) grades.add(ComeBowling(10));
+            calScores();
+            calAllScores();
+            flag = true;
         }
-        calScores();
-        calAllScores();
     }
 
     /**
@@ -128,14 +117,15 @@ public class Player implements Member {
 
     @Override
     public String toString() {
-        return "Player{" +
-                "name='" + name + '\'' +
-                ", account='" + account + '\'' +
-                ", password='" + password + '\'' +
-                ", phoneNum='" + phoneNum + '\'' +
-                ", site='" + site + '\'' +
-                ", scores=" + scores.toString()+
-                ", allScore=" + allScore +
-                '}';
+        return "姓名：" + name + '\n' +
+                "账号：" + account + '\n' +
+                "密码：" + password + '\n' +
+                "电话：" + phoneNum + '\n' +
+                "地址：" + site + '\n';
     }
+
+    public boolean getFlag() {
+        return flag;
+    }
+
 }
